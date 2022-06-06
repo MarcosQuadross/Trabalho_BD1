@@ -21,8 +21,6 @@ create table ENDERECO(
     cidade VARCHAR(30),
     cpf CHAR(14),
     PRIMARY KEY(numeracao)
-    -- FOREIGN KEY (cpf) REFERENCES PESSOA(cpf) ON DELETE CASCADE,
---     UNIQUE(cpf)
 );
 
 create table PESSOA(
