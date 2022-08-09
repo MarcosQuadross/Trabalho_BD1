@@ -2,6 +2,7 @@
 
 -- GitHub : https://github.com/MarcosdQuadros/Trabalho_BD1 
 
+
 DROP TABLE IF EXISTS ASSISTE_LUTA;
 DROP TABLE IF EXISTS DISPUTA;
 DROP TABLE IF EXISTS ATLETA;
@@ -15,24 +16,25 @@ DROP TABLE IF EXISTS ESPECTADOR;
 DROP TABLE IF EXISTS PESSOA;
 DROP TABLE IF EXISTS ENDERECO;
 
+CREATE TABLE PESSOA(
+	cpf CHAR(14),
+    rg CHAR(10),
+    nome VARCHAR(30),
+    PRIMARY KEY(cpf)
+);
+
 CREATE TABLE ENDERECO(
 	numeracao INTEGER,
     rua	VARCHAR(30),
     bairro VARCHAR(30),
     cidade VARCHAR(30),
-    PRIMARY KEY(numeracao)
+    cpf_pessoa CHAR(14),
+    PRIMARY KEY(numeracao, cpf_pessoa),
+    FOREIGN KEY(cpf_pessoa) REFERENCES PESSOA(cpf) ON DELETE CASCADE
 
 );
 
-CREATE TABLE PESSOA(
-	cpf CHAR(14),
-    rg CHAR(10),
-    nome VARCHAR(30),
-    num_endereco INTEGER,
-    PRIMARY KEY(cpf),
-    FOREIGN KEY(num_endereco) REFERENCES ENDERECO(numeracao)
 
-);
 
 CREATE TABLE ESPECTADOR(
 	cpf CHAR(14),
